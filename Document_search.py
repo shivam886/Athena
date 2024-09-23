@@ -2,25 +2,25 @@ import streamlit as st
 import requests
 
 # Google API details
-API_KEY = "AIzaSyDuWR39HVPM15hAgyFVoGe3Epc6R0C1eeQ"
+API_KEY = "AIzaSyDzQ09VRrJkvScH8I3yI26MWgrzMl1rzAo"
 SEARCH_ENGINE_ID = "60bbab66bd5d84f01"
 
-# Google Dork templates specifically for documents
+# Google Dork templates for documents, generalized for broader searches
 dork_templates = [
-    'site:{keyword} filetype:pdf',
-    'site:{keyword} filetype:doc',
-    'site:{keyword} filetype:docx',
-    'site:{keyword} filetype:xls',
-    'site:{keyword} filetype:xlsx',
-    'site:{keyword} filetype:csv',
-    'site:{keyword} filetype:txt',
-    'site:{keyword} ext:pdf',
-    'site:{keyword} ext:doc',
-    'site:{keyword} ext:docx',
-    'site:{keyword} ext:xls',
-    'site:{keyword} ext:xlsx',
-    'site:{keyword} ext:csv',
-    'site:{keyword} ext:txt'
+    'filetype:pdf "{keyword}"',
+    'filetype:doc "{keyword}"',
+    'filetype:docx "{keyword}"',
+    'filetype:xls "{keyword}"',
+    'filetype:xlsx "{keyword}"',
+    'filetype:csv "{keyword}"',
+    'filetype:txt "{keyword}"',
+    '"{keyword}" ext:pdf',
+    '"{keyword}" ext:doc',
+    '"{keyword}" ext:docx',
+    '"{keyword}" ext:xls',
+    '"{keyword}" ext:xlsx',
+    '"{keyword}" ext:csv',
+    '"{keyword}" ext:txt'
 ]
 
 # Function to perform Google Search using Google Custom Search API
@@ -31,6 +31,7 @@ def google_dork_search(query):
         
         # Make the request to the API
         response = requests.get(api_url)
+        response.raise_for_status()  # Raise an error for bad responses
         results = response.json()
         
         # Return the list of search results
@@ -42,10 +43,10 @@ def google_dork_search(query):
 
 # Streamlit Frontend
 def main():
-    st.title("Document Search Automation (Google Dorking)")
+    st.title("Document Search")
 
     # Input field for keyword
-    keyword = st.text_input("Enter domain name, company, or keyword to search for documents:")
+    keyword = st.text_input("Enter a name, company, or keyword to search for documents:")
 
     if st.button("Search"):
         if keyword:

@@ -119,7 +119,7 @@ if original_domain:
     variations = generate_domain_variations(original_domain)
 
     # Step 4: WHOIS Lookup on Similar Domains (to check if they are registered/active with IP)
-    st.header("Checking Similar Domain Availability (WHOIS Lookup with IP)...")
+    st.header("Checking Similar Domain Availability")
     similar_domain_info = check_domains_parallel(variations)
     active_domains = [domain_info for domain_info in similar_domain_info if domain_info['registered']]
 

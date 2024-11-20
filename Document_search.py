@@ -2,12 +2,26 @@ import streamlit as st
 import requests
 
 # Google API details
-API_KEY = "AIzaSyA0t2vtCRGPcUrGWoCXE4epBGpqbgmbb60"
+API_KEY = "AIzaSyAa08ymtgu3fhaWteq404lPxwPqRdPMGSk"
 SEARCH_ENGINE_ID = "60bbab66bd5d84f01"
 
 # Google Dork templates for documents, generalized for broader searches
-dork_templates = 'filetype:pdf "{keyword}" or filetype:doc "{keyword}" or filetype:docx "{keyword}" or filetype:xls "{keyword}" or filetype:xlsx "{keyword}" or filetype:csv "{keyword}" or filetype:txt "{keyword}" or "{keyword}" ext:pdf or "{keyword}" ext:doc or "{keyword}" ext:docx or "{keyword}" ext:xls or "{keyword}" ext:xlsx or "{keyword}" ext:csv or "{keyword}" ext:txt'
-
+dork_templates = [
+    'filetype:pdf "{keyword}"',
+    'filetype:doc "{keyword}"',
+    'filetype:docx "{keyword}"',
+    'filetype:xls "{keyword}"',
+    'filetype:xlsx "{keyword}"',
+    'filetype:csv "{keyword}"',
+    'filetype:txt "{keyword}"',
+    '"{keyword}" ext:pdf',
+    '"{keyword}" ext:doc',
+    '"{keyword}" ext:docx',
+    '"{keyword}" ext:xls',
+    '"{keyword}" ext:xlsx',
+    '"{keyword}" ext:csv',
+    '"{keyword}" ext:txt'
+]
 
 # Function to perform Google Search using Google Custom Search API
 def google_dork_search(query):

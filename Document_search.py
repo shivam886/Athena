@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 
 # Google API details
-API_KEY = "AIzaSyAa08ymtgu3fhaWteq404lPxwPqRdPMGSk"
+API_KEY = "AIzaSyCDNPBC6xiTYVPjVAMh-Jycxe03cgik-jI"
 SEARCH_ENGINE_ID = "60bbab66bd5d84f01"
 
 # Google Dork templates for documents, generalized for broader searches
